@@ -4,6 +4,7 @@ dotenv.config();
 const express = require("express");
 const morgan = require("morgan");
 const connectDB = require("./config/db.config");
+const serverless = require("serverless-http");
 
 const app = express();
 
@@ -19,13 +20,24 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/courses", require("./routes/course.route"));
 
 
-connectDB()
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server running at http://localhost:${PORT}/`);
-        });
-    })
-    .catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
-        process.exit(1);
+connectDB().catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+    process.exit(1);
 });
+
+module.exports = app;
+module.exports.handler = serverless(app);
+
+
+
+
+// connectDB()
+//     .then(() => {
+//         app.listen(PORT, () => {
+//             console.log(`Server running at http://localhost:${PORT}/`);
+//         });
+//     })
+//     .catch((error) => {
+//         console.error("Error connecting to MongoDB:", error);
+//         process.exit(1);
+// });
