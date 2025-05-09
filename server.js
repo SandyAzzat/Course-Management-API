@@ -18,7 +18,6 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/api/courses", require("./routes/course.route"));
 
-res.send("Hello World!");
 
 connectDB()
     .then(() => {
