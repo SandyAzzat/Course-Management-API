@@ -1,9 +1,17 @@
 {
-    "rewrites" : [
+    "version": 2,
+    "builds": [
         {
-            "source":"/api/courses",
-            "destination":"/server.js"
+        "src": "server.js",
+        "use": "@vercel/node"
+        }
+    ],
+    "rewrites": [
+        {
+        "source": "/api/courses",
+        "destination": "/server.js"
         }
     ]
 }
+
 
