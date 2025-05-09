@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 app.get("/", (req, res) => res.send("Server is running"));
 
-app.use("./uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api/courses", require("./routes/course.route"));
 
