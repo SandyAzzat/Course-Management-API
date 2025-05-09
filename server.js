@@ -3,21 +3,21 @@ dotenv.config();
 
 const express = require("express");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
 const connectDB = require("./config/db.config");
-
-const app = express();
+const courseRoutes = require("./routes/course.route");
 
 const PORT = process.env.PORT || 4000;
 
+const app = express();
+app.use(bodyParser.json());
+
 app.use(express.json());
 app.use(morgan("dev"));
+app.use("/uploads", express.static("uploads"));
+app.use("/api/courses", courseRoutes);
 
 app.get("/", (req, res) => res.send("Server is running via Vercel!"));
-
-app.use("/uploads", express.static("uploads"));
-
-app.use("/api/courses", require("./routes/course.route"));
-
 
 connectDB()
     .then(() => {
