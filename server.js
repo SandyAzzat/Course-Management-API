@@ -19,13 +19,12 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/api/courses", require("./routes/course.route"));
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
-    connectDB()
-        .then(() => {
-        console.log("MongoDB connected successfully");
-        })
-        .catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server running at http://localhost:${PORT}/`);
         });
+    })
+    .catch((error) => {
+        console.error("Error connecting to MongoDB:", error);
 });
