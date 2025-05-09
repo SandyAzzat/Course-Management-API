@@ -14,8 +14,9 @@ app.use(morgan("dev"));
 
 app.get("/", (req, res) => res.send("Server is running"));
 
-app.use("/uploads", express.static("uploads"));
-app.use("/api/courses", require("./routes/course.routes"));
+app.use("./uploads", express.static("uploads"));
+
+app.use("/api/courses", require("./routes/course.route"));
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);

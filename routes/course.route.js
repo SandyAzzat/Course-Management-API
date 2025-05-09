@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../upload.middleware");
+const upload = require("../middlewares/upload.middleware");
 
 const {
     getAllCourses,
@@ -23,11 +23,3 @@ router.delete("/:id", deleteCourse);
 
 module.exports = router;
 
-/*
-Method   Route              Description
-GET     /api/courses        Get all courses
-GET     /api/courses/:id    Get single course by ID
-POST    /api/courses        Add a new course
-PUT     /api/courses/:id    Update existing course
-DELETE  /api/courses/:id    Delete course by ID
-*/
