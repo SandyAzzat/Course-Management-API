@@ -30,7 +30,7 @@ const addNewCourse = async (req, res) => {
         const { title, description, startDate, endDate, price } = req.body;
         let image = "";
         if (req.file) {
-            image = `http://localhost:4000/uploads/${req.file.filename}`; 
+            image = `https://course-management-api-git-main-sandy-azzats-projects.vercel.app/uploads/${req.file.filename}`; 
         }
         const { error } = courseSchemaValidation.validate({
             title,
@@ -62,7 +62,7 @@ const updateCourse = async (req, res) => {
     const { error } = courseSchemaValidation.validate({
         title,
         description,
-        image: req.file ? `http://localhost:4000/uploads/${req.file.filename}` : req.body.image,
+        image: req.file ? `https://course-management-api-git-main-sandy-azzats-projects.vercel.app/uploads/${req.file.filename}` : req.body.image,
         startDate,
         endDate,
         price,
@@ -84,7 +84,7 @@ const updateCourse = async (req, res) => {
             }
         }
 
-        const image = req.file ? `http://localhost:4000/uploads/${req.file.filename}` : course.image;
+        const image = req.file ? `https://course-management-api-git-main-sandy-azzats-projects.vercel.app/uploads/${req.file.filename}` : course.image;
 
         const updatedData = {
             title,
