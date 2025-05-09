@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => res.send("Server is running"));
+app.get("/", (req, res) => res.send("Hello , Server is running"));
 
 app.use("/uploads", express.static("uploads"));
 
