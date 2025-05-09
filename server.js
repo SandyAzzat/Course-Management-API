@@ -21,11 +21,11 @@ app.get("/", (req, res) => res.send("Server is running via Vercel!"));
 
 connectDB()
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server running at http://localhost:${PORT}/`);
-        });
+        console.log("MongoDB connected successfully!");
     })
     .catch((error) => {
         console.error("Error connecting to MongoDB:", error);
         process.exit(1);
 });
+
+module.exports = app;
